@@ -1,0 +1,19 @@
+﻿@model RoboBank.BankingPortal.Application.Account
+<table class="table table-striped">
+    <tr>
+        <th>IBAN</th>
+        <th>Currency</th>
+        <th>Balance</th>
+    </tr>
+    <tr>
+        <td>
+            @Model.Id
+        </td>
+        <td>
+            @Model.Currency
+        </td>
+        <td>
+            @Model.Balance
+        </td>
+    </tr>
+</table>

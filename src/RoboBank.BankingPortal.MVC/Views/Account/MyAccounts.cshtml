@@ -1,0 +1,14 @@
+﻿@model IEnumerable<RoboBank.BankingPortal.Application.IBAN>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.DropDownList("ibans", Model.Select(iban => new SelectListItem { Text = iban.Value }), new Dictionary<string, object> { { "class", "form-control" } })
+            <button class="btn btn-default" onclick="$('#details').load('@Url.Action("AccountDetails", "Account")'+'?iban='+$('#ibans').val())">View Details</button>
+        </div>
+        <div id="details"></div>
+    </div>
+</div>
+
+
+

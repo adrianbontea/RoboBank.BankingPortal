@@ -1,0 +1,52 @@
+﻿@model RoboBank.BankingPortal.MVC.Models.HomeViewModel
+
+<div class="jumbotron">
+    <h1>RoboBank Banking Portal</h1>
+    <p class="lead">Hi @Model.UserFirstName! Welcome to your RoboBank account!</p>
+</div>
+
+<div class="row">
+    <div id="map" class="col-md-6 homePageWidget"></div>
+    <div class="col-md-6 homePageWidget">
+        <p><strong>Comercials</strong></p>
+        <video controls>
+            <source src="~/Content/Video/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <audio controls>
+            <source src="~/Content/Audio/mov_bbb.mp3" type="audio/mp3">
+            Your browser does not support HTML5 audio.
+        </audio>
+    </div>
+    <div class="col-md-6 homePageWidget">
+        <p><strong>Currency Calculator</strong></p>
+        <p><i>This calculator uses up to date exchange rates as provided by the Central European Bank Services</i></p>
+        <table class="table table-striped">
+            <tr>
+                <th>From</th>
+                <th>To</th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DropDownList("from", Model.FromCurrencies.Select(currency => new SelectListItem { Text = currency}))
+                </td>
+                <td>
+                    @Html.DropDownList("to", Model.ToCurrencies.Select(currency => new SelectListItem { Text = currency }))
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" class="form-control" id="fromAmount">
+                </td>
+                <td>
+                    <input type="number" class="form-control" id="result" readonly="readonly">
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-default" id="calc" onclick="new CurrencyCalculator($('#from').val(), $('#to').val(), $('#fromAmount').val()).calculate(function (result) { $('#result').val(result)})">Calculate</button>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/home")
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM7EASkcbfZMrdtmqqEc_0uvH0R4vJ_ww&callback=getLocation">
+</script>

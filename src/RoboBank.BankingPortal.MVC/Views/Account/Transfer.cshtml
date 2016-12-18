@@ -1,0 +1,22 @@
+﻿@model IEnumerable<RoboBank.BankingPortal.Application.IBAN>
+
+<form action='@Url.Action("Transfer", "Account")' method="post">
+    <div class="form-group">
+        <label for="SourceAccountId">From Account</label>
+        @Html.DropDownList("SourceAccountId", Model.Select(iban => new SelectListItem { Text = iban.Value }), new Dictionary<string, object> { { "class", "form-control" } })
+    </div>
+    <div class="form-group">
+        <label for="TargetAccountId">To Account</label>
+        <input type="text" class="form-control" id="TargetAccountId" name="TargetAccountId" placeholder="To Account"/>
+    </div>
+    <div class="form-group">
+        <label for="Currency">Currency</label>
+        <input type="text" class="form-control" id="Currency" name="Currency" placeholder="Currency" />
+    </div>
+    <div class="form-group">
+        <label for="Amount">Amount</label>
+        <input type="number" class="form-control" id="Amount" name="Amount" placeholder="Amount" />
+    </div>
+    <button type="submit" class="btn btn-default">Transfer</button>
+</form>
+
