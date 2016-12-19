@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using RoboBank.BankingPortal.MVC.Custom;
+using System.Web.Mvc;
 
 namespace RoboBank.BankingPortal.MVC
 {
@@ -8,6 +9,7 @@ namespace RoboBank.BankingPortal.MVC
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthorizeAttribute());
+            filters.Add(new AIHandleErrorAttribute());
         }
     }
 }
